@@ -15,12 +15,12 @@ O barbeiro terá acesso a lista de agendamentos do mês, poderá cancelar agenda
 
 O que eu penso que seria essencial é: O app Precisa ter o acesso do barbeiro e o do Usuário, O usuário precisa ter acesso a lista de barbearias, que tem pela região, puxa a localização do usuário, ou o usuário mesmo coloca sua localização de forma manual. Como usuário gostaria que eu não precise ficar procurando barbearias, gostaria de entrar no app e já aparecesse as barbearias mais pertos possíveis de forma da mais perta para mais longe. O usuário ter ao escolher uma das barbearias, acesso as todos os horários disponíveis, imagino um mini calendario, mostrando a semana, e o usuário escolhendo o dia que ele deseja. Ao escolher, ver os serviços que o barbeiro faz, e os valores, ao selecionar uma mensagem de confirmação do agendamento, e um comprovante de agendamento, talvez uma confirmação que foi agendando por email ou por sms. Na parte do Barbeiro, Um login, que ele coloque todas as informações, eu imagino algumas box, com todos os serviços disponíveis no app, e o barbeiro depois de preencher todas as informações dele / barbearia, ele seleciona os tipos de serviço que ele faz, para essa informação ficar salva para o usuário. depois ele preenche os valores de cada serviço, depois de tudo isso feito, ele tem acesso a página do barbeiro, que mostra o calendario, ele podendo selecionar os dias que ele não quer que haja agendamentos, e os horarios também. Após depois de algum agendamento,irá aparecer no calendario, a pessoa que agendou, o nome, telefone e o serviço que ele vai fazer. O que vem na minha cabeça agora seria isso.
 
-O barbeiro tem apenas acesso ao seu perfil ali, e seus horários. 
+O barbeiro tem apenas acesso ao seu perfil ali, e seus horários.
 O cliente tem acesso a todas as berbarias e seus horários.
 
 
 
-Minmo produto viavel: 
+Minmo produto viavel:
 
 Acho que o que precisa ter um em um MVP, é um dois acesso de primeira mão perguntando se é cliente ou barbeiro, ao clicar leva para para login de cada um, o cliente apenas seu nome,e o telefone, o do barbeiro seus dados para printar depois, Nome da barbearia, nome do barbeiro, dias que ele vai atender.
 
@@ -35,44 +35,17 @@ Cadastro com nome e telefone → busca barbearia por nome → vê horários disp
 Fluxo do barbeiro
 Cadastro com nome, nome da barbearia, dias e horários que atende, serviços → acessa painel com calendário mostrando agendamentos → vê nome e telefone do cliente em cada horário ocupado
 
-Entidade que Precisa salvar no banco de dados: 
+Entidade que Precisa salvar no banco de dados:
 
 Cliente — nome, telefone
 Barbeiro — nome, nome da barbearia, dias que atende, horários que atende
 Serviço — nome do serviço, valor, pertence a um barbeiro
 Agendamento — qual cliente, qual barbeiro, qual serviço, qual dia e horário
 Bloqueio — dia ou horário que o barbeiro travou
+==
 
-
-
-História 1.1 — Cadastro e login do cliente:
-Como usuário eu quero entrar no app e ter uma página de login para entrar ou caso eu não tenho um login, uma opção de registrar. Para meus dados aparecer para o Barbeiro.
-
-Critérios de aceitação:
-
-- O número de telefone precisa ser válido.
-- Nome precisa ter uma quantidade mínima de caracteres.
-- Nome não pode ter números no meio.
-- O número não pode estar salvo em outro usuário.
-- Nenhum dos campos pode estar vazio.
-
-
-História 1.2 — Procura de Barbearias:
-Como usuário eu quero que logo quando entrar no app com meu user, apareça algumas opções de barbearia e uma opção para procurar barbearias disponíveis, tudo isso para facilitar meu uso no app, ser um app simplificado.
-
-Critérios de aceitação: 
-
-- Para entrar nessa parte o usuário precisa ser válido.
-- Aparecer nesta tela apenas barbearias que são válidas
-- Caso o usuário procurar barbearias que não existem, aparecer uma mensagem dizendo que não existe aquela barbearia.
-
-História 1.3 — Agendamento de horário 
- Como usuário, ao selecionar a barbearia quero selecionar o dia, e que aparece os horários disponíveis naquele dia, após isso, quero ver os serviços que o barbeiro faz, ver o preço, e selecionar os serviços que eu desejo fazer. Depois preciso de comprovante, uma mensagem de verificação que foi agendado.
-
-Critérios de aceitação:
-
-- Aparecer apenas os dias e horários disponíveis.
-- Mostrar em tela apenas os serviços que o Barbeiro faz e o preço.
-- Selecionar mais de um serviço caso eu desejar.
-- O agendamento só vai ser definido caso o usuário não tenha mais nenhum agendamento ativo ainda.
-- Uma mensagem que aquele agendamento foi concluído. 
+Cliente — id, nome, telefone, senha
+Barbeiro — id, nome, nome_barbearia, senha, localizacao, telefone, foto
+Serviço — id, nome, valor, id_barbeiro
+Agendamento — id, dia, horario, id_cliente, id_barbeiro, id_servico
+Bloqueio — id, dia, id_barbeiro
