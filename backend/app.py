@@ -1,8 +1,10 @@
-#Importação de bibliotecas.
+#Importação de bibliotecas e dados.
 from flask import Flask
 from backend.extensions import db
 import os
 from dotenv import load_dotenv
+from backend.routes.cliente import cliente_bp 
+ 
 
 #Carregando env.
 load_dotenv()
@@ -19,6 +21,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') # É o endere�
 #Inicialização do banco de dados.
 db.init_app(app)
 
+
 #Importação dos models, para o db precisa ver e quais tabelas ele irá criar.
 from backend.models.cliente import Cliente
 from backend.models.barbeiro import Barbeiro
@@ -26,6 +29,8 @@ from backend.models.servico import Serviço
 from backend.models.agendamento import Agendamento
 from backend.models.bloqueio import Bloqueio
 
+#Dizendo para o Flask que esse grupo faz parte da aplicação;
+app.register_blueprint(cliente_bp)
 
 #Inicialização do app.
 @app.route('/')
