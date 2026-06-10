@@ -7,4 +7,3 @@ class Bloqueio(db.Model):
     data = db.Column(db.Date, nullable = False)
     horario = db.Column(db.Time,nullable = True)
     id_barbeiro = db.Column(db.Integer, db.ForeignKey('barbeiros.id'),nullable = False)
-
