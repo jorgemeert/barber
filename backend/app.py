@@ -5,7 +5,8 @@ import os
 from dotenv import load_dotenv
 from backend.routes.cliente import cliente_bp
 from backend.routes.barbeiro import barbeiro_bp
-
+from backend.routes.servico import servico_bp
+from backend.routes.agendamento import agendamento_bp
 
 
 #Carregando env.
@@ -34,6 +35,8 @@ from backend.models.bloqueio import Bloqueio
 #Dizendo para o Flask que esse grupo faz parte da aplicação;
 app.register_blueprint(cliente_bp)
 app.register_blueprint(barbeiro_bp)
+app.register_blueprint(servico_bp)
+app.register_blueprint(agendamento_bp)
 
 #Inicialização do app.
 @app.route('/')

@@ -1,6 +1,6 @@
 #Importação de funções e bibliotecas
 import bcrypt# Bliblioteca que criptografa a senha de forma aleátoria.
-from flask import Blueprint, request ,jsonify
+from flask import Blueprint, request, jsonify
 #Blueprint - Forma de organizar as rotas em grupos.
 #Request - Objeto que contém os dados que o usuário enviou.
 #Jsonify - Converte os dados python para JSON, para devolver ao front-end. Toda API REST responde em JSON.
