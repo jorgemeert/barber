@@ -29,3 +29,11 @@ def agendar_cliente():
     db.session.commit()
 
     return jsonify({'mensagem':f'Seu agendamento foi concluído pra o dia {agendamento.dia} no horário {agendamento.horario}'})
+
+
+@agendamento_bp.route('/mostrarAgendamentos/<int:id_barbeiro>', methods = ['GET'])
+def mostrar_agendamentos(id_barbeiro):
+
+    if Agendamento.query.filter_by(id_barbeiro = id_barbeiro).all():
+
+        return jsonify({'você tem ' : len(a.id_servico)}for a in id_barbeiro)
