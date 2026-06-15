@@ -34,6 +34,10 @@ def agendar_cliente():
 @agendamento_bp.route('/mostrarAgendamentos/<int:id_barbeiro>', methods = ['GET'])
 def mostrar_agendamentos(id_barbeiro):
 
-    if Agendamento.query.filter_by(id_barbeiro = id_barbeiro).all():
+    agendamentos = Agendamento.query.filter_by(id_barbeiro = id_barbeiro).all()
 
-        return jsonify({'você tem ' : len(a.id_servico)}for a in id_barbeiro)
+    if not agendamentos:
+        return jsonify ({'mensagem':'Você não tem nenhum agendamento!'})
+
+
+    return jsonify([{'dia': str(a.dia), 'horario': str(a.horario),'id_cliente': a.id_cliente,'id_servico': a.id_servico}for a in agendamentos])
