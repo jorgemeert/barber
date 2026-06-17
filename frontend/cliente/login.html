@@ -5,5 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
   </head>
-  <body></body>
+  <body>
+    <main id="login">
+      <div>
+        <h1>Corte Já</h1>
+        <h2>Entre agora e agende seu horário!</h2>
+      </div>
+      <div>
+        <button class="trocaLogin">Login</button>
+        <button class="trocaRegistro">Registre-se</button>
+      </div>
+      <div>
+        <div>
+          <label for="numero_login">Digite seu número</label>
+          <input type="text" id="numero_login" />
+        </div>
+        <div>
+          <label for="senha_login">Digite sua senha</label>
+          <input type="password" id="senha_login" />
+        </div>
+        <button id="btnLogin">Entrar</button>
+      </div>
+    </main>
+    <!-- Registro -->
+    <section id="registro" style="display: none">
+      <div>
+        <h1>Corte Já</h1>
+        <h2>Entre agora e agende seu horário!</h2>
+      </div>
+      <div>
+        <button class="registroTrocaLogin">Login</button>
+        <button class="registroTrocaRegistro">Registre-se</button>
+      </div>
+      <div>
+        <div>
+          <label for="numero_registro">Digite seu número</label>
+          <input type="text" id="numero_registro" />
+        </div>
+        <div>
+          <label for="nome_registro">Digite seu Nome</label>
+          <input type="text" id="nome_registro" />
+        </div>
+        <div>
+          <label for="senha_registro">Digite sua senha</label>
+          <input type="password" id="senha_registro" />
+        </div>
+        <button id="btnRegistrar">Registrar</button>
+      </div>
+    </section>
+    <script src="./login.js"></script>
+  </body>
 </html>
