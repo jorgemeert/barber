@@ -1,5 +1,6 @@
 #Importação de bibliotecas e dados.
 from flask import Flask
+from flask_cors import CORS
 from backend.extensions import db
 import os
 from dotenv import load_dotenv
@@ -35,11 +36,13 @@ from backend.models.bloqueio import Bloqueio
 from backend.models.bloqueio import Bloqueio
 
 #Dizendo para o Flask que esse grupo faz parte da aplicação;
+CORS(app)
 app.register_blueprint(cliente_bp)
 app.register_blueprint(barbeiro_bp)
 app.register_blueprint(servico_bp)
 app.register_blueprint(agendamento_bp)
 app.register_blueprint(bloqueio_bp)
+
 
 
 #Inicialização do app.

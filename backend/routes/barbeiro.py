@@ -48,3 +48,15 @@ def login_barbeiro():
 
     else:
         return jsonify({'mensagem':'Senha incorreta!'}),400
+
+
+@barbeiro_bp.route('/barbearias',methods = ['GET'])
+def mostrar_barbearias():
+
+    barbeiro = Barbeiro.query.all()
+
+    if not barbeiro:
+      return jsonify({'mensagem':'Nenhuma barbearia cadastrada'})
+
+
+    return jsonify([{'nome':b.nome, 'nome_barbearia':b.nome_barbearia,'id':b.id,'foto': b.foto, 'localizacao' : b.localizacao}for b in barbeiro])
