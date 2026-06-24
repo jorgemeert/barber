@@ -33,4 +33,4 @@ def listar_servicos(id_barbeiro):
         return jsonify({'mensagem':'Esse barbeiro não cadastrou nenhum serviço!'}),404
 
     else:
-        return jsonify([{'nome': s.nome_servico, 'valor': s.valor} for s in servicos]),200
+        return jsonify([{'nome_servico': s.nome_servico, 'valor': s.valor} for s in servicos]),200

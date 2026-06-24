@@ -60,3 +60,20 @@ def mostrar_barbearias():
 
 
     return jsonify([{'nome':b.nome, 'nome_barbearia':b.nome_barbearia,'id':b.id,'foto': b.foto, 'localizacao' : b.localizacao}for b in barbeiro])
+
+
+@barbeiro_bp.route('/pesquisarBarbearia', methods = ['POST'])
+def pesquisar_barbearia():
+
+    dados = request.get_json()
+
+    barbeiro = Barbeiro.query.filter_by(nome_barbearia = dados['nome_barbearia']).first()
+
+    if barbeiro == None:
+        return jsonify({'mensagem' : 'Nenhuma barbearia com esse nome foi encontrado!'})
+
+    else:
+        return jsonify([{'nome':barbeiro.nome, 'nome_barbearia':barbeiro.nome_barbearia,'id':barbeiro.id,'foto': barbeiro.foto, 'localizacao' : barbeiro.localizacao}])
+
+
+
