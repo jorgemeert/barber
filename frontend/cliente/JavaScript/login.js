@@ -42,7 +42,19 @@ btnRegistrar.addEventListener("click", () => {
       telefone: numero,
       senha: senha,
     }),
-  });
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        alert("Tente novamente!");
+      }
+    })
+    .then((dados) => {
+      if (dados && dados.id) {
+        window.location.href = `barbearias.html?id=${dados.id}`;
+      }
+    });
 });
 
 btnLogin.addEventListener("click", () => {
@@ -58,11 +70,15 @@ btnLogin.addEventListener("click", () => {
       telefone: numero,
       senha: senha,
     }),
-  }).then((response) => {
-    if (response.ok) {
-      window.location.href = "barbearias.html";
-    } else {
-      alert("Telefone ou senha incorretos!");
-    }
-  });
+  })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        alert("Telefone ou senha incorretos!");
+      }
+    })
+    .then((dados) => {
+      window.location.href = `barbearias.html?id=${dados.id}`;
+    });
 });

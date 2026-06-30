@@ -6,11 +6,29 @@
     <title>CorteJá</title>
   </head>
   <body>
-    <h1>CorteJá</h1>
-    <p>Vamos começar seu agendamento</p>
+    <header>
+      <a href="" id="voltar">Voltar</a>
+      <h1>CorteJá</h1>
+      <p>Vamos começar seu agendamento</p>
+    </header>
     <main>
       <div id="servicosBarbeiro"></div>
+      <div>
+        <div>
+          <label for="data">Selecione um dia</label>
+          <input type="date" id="data" />
+        </div>
+        <div>
+          <label for="horario">Selecione o horário do seu interesse</label>
+          <input type="time" id="horario" />
+        </div>
+        <div>
+          <label for="servico">Qual serviço você tem interesse em fazer?</label>
+          <div id="servicos"></div>
+        </div>
+        <button id="btnAgendar">Agende seu horário</button>
+      </div>
     </main>
-    <script src="agendamentos.js"></script>
+    <script src="./JavaScript/agendamentos.js"></script>
   </body>
 </html>

@@ -37,7 +37,7 @@ def cadastrar_cliente():
   db.session.commit()
 
   #retorna para o front end uma mensagem de sucesso, devolve em JSON, pois o front só recebe e envia em JSON.
-  return jsonify({'mensagem':'Cliente cadastrado com sucesso!'}),201
+  return jsonify({'mensagem':'Cliente cadastrado com sucesso!','id':novo_cliente.id}),201
 
 # 200 — sucesso
 # 201 — criado com sucesso
@@ -67,7 +67,7 @@ def login_cliente():
   #bcrypt.checkpw(...) - método que verifica senha.
   #cliente.senha - É o hash que está salvo no banco.
   #dados['senha'].ecode('UTF-8') - Senha que o usário digitou.
-    return jsonify({'mensagem':'Login correto! Seja bem-vindo!'}),200
+    return jsonify({f'mensagem':'Login correto! Seja bem-vindo!','id':cliente.id}),200
 
   else:
     return jsonify({'mensagem':'Senha incorreta!'}),400

@@ -22,7 +22,7 @@ O **CorteJá** é uma plataforma web onde barbeiros cadastram sua barbearia e di
 - Login
 - Busca de barbearias por nome
 - Visualização de serviços e valores de cada barbearia
-- Agendamento de horário e serviço
+- Agendamento de dia, horário e serviço
 - Visualização do agendamento ativo
 - Cancelamento de agendamento
 
@@ -30,11 +30,10 @@ O **CorteJá** é uma plataforma web onde barbeiros cadastram sua barbearia e di
 
 - Cadastro com dados da barbearia (nome, localização, foto, telefone)
 - Login
-- Cadastro de serviços e valores oferecidos
-- Visualização dos agendamentos recebidos
+- Configuração dos serviços oferecidos e seus valores
+- Visualização dos agendamentos recebidos (calendário)
+- Cancelamento de agendamentos
 - Bloqueio de dias e horários indisponíveis
-
-> 🚧 Em desenvolvimento: configuração de horários de atendimento, calendário visual do barbeiro e cancelamento de agendamento pelo barbeiro com notificação ao cliente.
 
 ---
 
@@ -66,39 +65,47 @@ O **CorteJá** é uma plataforma web onde barbeiros cadastram sua barbearia e di
 ```
 barber/
 ├── backend/
-│   ├── models/             # Modelos do banco de dados
+│   ├── models/                 # Modelos do banco de dados
 │   │   ├── cliente.py
 │   │   ├── barbeiro.py
 │   │   ├── servico.py
 │   │   ├── agendamento.py
 │   │   └── bloqueio.py
-│   ├── routes/             # Rotas da API REST
+│   ├── routes/                 # Rotas da API REST
 │   │   ├── cliente.py
 │   │   ├── barbeiro.py
 │   │   ├── servico.py
 │   │   ├── agendamento.py
 │   │   └── bloqueio.py
-│   ├── extensions.py       # Instância do banco de dados (SQLAlchemy)
-│   └── app.py              # Inicialização da aplicação Flask
+│   ├── config/                 # Configurações da aplicação
+│   ├── extensions.py           # Instância do banco de dados (SQLAlchemy)
+│   └── app.py                  # Inicialização da aplicação Flask
 ├── frontend/
-│   ├── index.html          # Escolha: cliente ou barbeiro
+│   ├── index.html              # Escolha: cliente ou barbeiro
 │   ├── script.js
 │   ├── style.css
 │   ├── cliente/
-│   │   ├── login.html      # Login / registro de cliente
-│   │   ├── login.js
-│   │   ├── barbearias.html # Lista e busca de barbearias
-│   │   ├── barbearias.js
-│   │   ├── agendamentos.html
-│   │   ├── agendamentos.js
-│   │   └── agendamento-ativo.html
+│   │   ├── login.html          # Login / registro de cliente
+│   │   ├── barbearias.html     # Lista e busca de barbearias
+│   │   ├── agendamentos.html   # Escolha de serviço, dia e horário
+│   │   ├── agendamento-ativo.html
+│   │   └── JavaScript/
+│   │       ├── login.js
+│   │       ├── barbearias.js
+│   │       ├── agendamentos.js
+│   │       └── agendamento-ativo.js
 │   └── barbeiro/
-│       ├── login.html
-│       ├── config.html
-│       ├── horarios.html
-│       └── calendario.html
-├── doc/                     # Histórias de usuário e planejamento
-├── .env                     # Variáveis de ambiente (não versionado)
+│       ├── login.html          # Login / registro de barbeiro
+│       ├── config.html         # Cadastro de serviços e valores
+│       ├── horarios.html       # Calendário de agendamentos
+│       ├── calendario.html     # Bloqueio de dias/horários
+│       └── JavaScript/
+│           ├── login.js
+│           ├── config.js
+│           ├── horarios.js
+│           └── calendario.js
+├── doc/                         # Histórias de usuário e backlog
+├── .env                         # Variáveis de ambiente (não versionado)
 ├── .gitignore
 └── requirements.txt
 ```
@@ -202,16 +209,16 @@ Use a extensão **Live Server** (ou similar) para abrir `frontend/index.html` em
 
 ## 📌 Status do Projeto
 
-🚧 **Em desenvolvimento** — MVP em construção.
+🚧 **Em desenvolvimento** — estrutura base do MVP concluída.
 
 - [x] Modelagem do banco de dados
 - [x] Backend completo (cliente, barbeiro, serviço, agendamento, bloqueio)
-- [x] Cadastro e login do cliente (frontend conectado à API)
-- [x] Busca e listagem de barbearias
-- [x] Listagem de serviços por barbearia
-- [ ] Confirmação de agendamento (dia, horário e serviço)
-- [ ] Telas e fluxo completo do barbeiro
-- [ ] Calendário visual de agendamentos
+- [x] Fluxo completo do cliente: cadastro, login, busca de barbearias, agendamento, cancelamento
+- [x] Fluxo completo do barbeiro: cadastro, login, configuração de serviços, calendário, bloqueio de horários
+- [x] Cancelamento de agendamento pelo barbeiro
+- [ ] Cancelamento de agendamento pelo cliente
+- [ ] Estilização (CSS) de todas as páginas
+- [ ] Notificação ao cliente em caso de cancelamento pelo barbeiro
 
 ---
 

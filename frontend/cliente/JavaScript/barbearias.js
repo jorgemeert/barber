@@ -1,5 +1,9 @@
-lista_barbearias = document.getElementById("lista_barbearias");
-btnPesquisa = document.getElementById("btnPesquisa");
+const lista_barbearias = document.getElementById("lista_barbearias");
+const btnPesquisa = document.getElementById("btnPesquisa");
+const params = new URLSearchParams(window.location.search);
+const idCliente = params.get("id");
+const agendamentosAtivos = document.getElementById("agendamentoAtivos");
+agendamentosAtivos.href = `agendamento-ativo.html?id=${idCliente}`;
 
 document.addEventListener("DOMContentLoaded", () => {
   fetch("http://127.0.0.1:5000/barbearias")
@@ -13,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
         document.getElementById(barbearias.id).addEventListener("click", () => {
-          window.location.href = `agendamentos.html?id=${barbearias.id}`;
+          window.location.href = `agendamentos.html?id=${idCliente}&id_barber=${barbearias.id}`;
         });
       });
     });
