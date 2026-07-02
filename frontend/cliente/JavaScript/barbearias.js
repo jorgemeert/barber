@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id='${barbearias.id}'>
       <p>${barbearias.nome_barbearia}</p>
       <p>${barbearias.localizacao}</p>
+      <img src="${barbearias.foto}" alt="imagem barbearia">
     </div>
   `;
         document.getElementById(barbearias.id).addEventListener("click", () => {

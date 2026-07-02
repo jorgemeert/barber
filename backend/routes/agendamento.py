@@ -69,7 +69,7 @@ def agendamentos_ativos(id_cliente):
 
     #Caso tenha, retorna para o front-end, os dados do agendamento.
     return jsonify({
-
+        'id': agendamentos_cliente.id,
         'dia': str(agendamentos_cliente.dia),
         'horario': str(agendamentos_cliente.horario),
         'id_barbeiro': agendamentos_cliente.id_barbeiro,
@@ -80,13 +80,16 @@ def agendamentos_ativos(id_cliente):
 @agendamento_bp.route('/cancelarAgendamento/<int:id>', methods = ['DELETE'])
 def cancelar_agendamento(id):
 
-
+    #Procurando o ID do agendamento.
     id_agendamento = Agendamento.query.filter_by(id = id).first()
 
+    #Caso não ache o id do agendamento.
     if not id_agendamento:
         return jsonify({'mensagem':'Você não possui agendamentos'}),404
 
+    #deletando o agendamento.
     db.session.delete(id_agendamento)
     db.session.commit()
 
+    #Mandando pro front-end uma mensagem de sucesso.
     return jsonify({'mensagem' : 'Agendamento cancelado com sucesso!'}),200

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="./css/calendario.css" />
   </head>
   <body>
     <main>
@@ -12,9 +13,15 @@
     </main>
     <main>
       <section>
-        <h2>Seu Horários que existem agendamentos!</h2>
         <div id="horariosAgendados"></div>
       </section>
+      <div id="meuModal" class="modalEscondido">
+        <div>
+          <p>Você tem certeza que deseja cancelar?</p>
+          <button id="sim">Sim</button>
+          <button id="nao">Não</button>
+        </div>
+      </div>
     </main>
     <script src="./JavaScript/calendario.js"></script>
   </body>

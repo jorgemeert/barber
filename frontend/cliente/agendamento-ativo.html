@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="./css/agendamento-ativo.css" />
   </head>
   <body>
     <header>
@@ -12,9 +13,15 @@
     </header>
     <main>
       <section>
-        <h2>Agendamentos Ativos</h2>
         <div id="agendamentosAtivos"></div>
       </section>
+      <div id="meuModal" class="modalEscondido">
+        <div class="modalConteudo">
+          <p>Você tem certeza que deseja cancelar?</p>
+          <button id="sim">Sim</button>
+          <button id="nao">Não</button>
+        </div>
+      </div>
     </main>
     <script src="./JavaScript/agendamento-ativo.js"></script>
   </body>
