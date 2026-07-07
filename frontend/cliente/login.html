@@ -4,55 +4,81 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
     <main id="login">
-      <div>
-        <h1>Corte Já</h1>
-        <h2>Entre agora e agende seu horário!</h2>
-      </div>
-      <div>
-        <button id="trocaLogin">Login</button>
-        <button id="trocaRegistro">Registre-se</button>
-      </div>
-      <div>
+      <section id="telaLogin">
         <div>
-          <label for="numero_login">Digite seu número</label>
-          <input type="text" id="numero_login" />
+          <h1>CorteJá</h1>
+          <h2>Seja bem-vindo Cliente!</h2>
         </div>
         <div>
-          <label for="senha_login">Digite sua senha</label>
-          <input type="password" id="senha_login" />
+          <button id="trocaLogin">Login</button>
+          <button id="trocaRegistro">Registre-se</button>
         </div>
-        <button id="btnLogin">Entrar</button>
-      </div>
+        <div class="login">
+          <div>
+            <div>
+              <label for="numero_login" class="telefone">Telefone (DD)</label>
+            </div>
+            <div>
+              <input type="text" id="numero_login" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="senha_login" class="senha">Digite sua senha</label>
+            </div>
+            <div>
+              <input type="password" id="senha_login" />
+            </div>
+          </div>
+          <button id="btnLogin">Entrar</button>
+        </div>
+      </section>
+
+      <!-- Registro -->
+      <section id="registro" style="display: none">
+        <div>
+          <h1>Corte Já</h1>
+          <h2>Entre agora e agende seu horário!</h2>
+        </div>
+        <div>
+          <button id="registroTrocaLogin">Login</button>
+          <button id="registroTrocaRegistro">Registre-se</button>
+        </div>
+        <div class="login">
+          <div>
+            <div>
+              <label for="nome_registro" class="nome">Digite seu Nome</label>
+            </div>
+            <div>
+              <input type="text" id="nome_registro" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="numero_registro" class="telefone"
+                >Digite seu número</label
+              >
+            </div>
+            <div>
+              <input type="text" id="numero_registro" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="senha_registro" class="senha">Digite sua senha</label>
+            </div>
+            <div>
+              <input type="password" id="senha_registro" />
+            </div>
+          </div>
+          <button id="btnRegistrar">Registrar</button>
+        </div>
+      </section>
     </main>
-    <!-- Registro -->
-    <section id="registro" style="display: none">
-      <div>
-        <h1>Corte Já</h1>
-        <h2>Entre agora e agende seu horário!</h2>
-      </div>
-      <div>
-        <button id="registroTrocaLogin">Login</button>
-        <button id="registroTrocaRegistro">Registre-se</button>
-      </div>
-      <div>
-        <div>
-          <label for="nome_registro">Digite seu Nome</label>
-          <input type="text" id="nome_registro" />
-        </div>
-        <div>
-          <label for="numero_registro">Digite seu número</label>
-          <input type="text" id="numero_registro" />
-        </div>
-        <div>
-          <label for="senha_registro">Digite sua senha</label>
-          <input type="password" id="senha_registro" />
-        </div>
-        <button id="btnRegistrar">Registrar</button>
-      </div>
-    </section>
     <script src="./javaScript/login.js"></script>
   </body>
 </html>

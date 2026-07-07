@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0f0f;
+  margin: 0;
+  color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  place-content: center;
+  align-items: center;
+}
+
+section {
+  border: 1px solid #7a6a35;
+  border-radius: 12px;
+  text-align: center;
+  padding: 45px 40px 55px;
+  width: 440px;
+  position: relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  left: 35px;
+  right: 35px;
+  bottom: 24px;
+  border-bottom: 1px solid #7a6a35;
+}
+
+section h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+section h2 {
+  margin: 10px 0 35px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #8a8a8a;
+}
+
+section > div:nth-child(2) {
+  display: flex;
+  width: 300px;
+  margin: 0 auto;
+}
+
+#trocaLogin,
+#trocaRegistro,
+#registroTrocaLogin,
+#registroTrocaRegistro {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #7a6a35;
+  color: #f5f5f5;
+  padding: 10px 0;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+}
+
+#trocaLogin,
+#registroTrocaLogin {
+  border-radius: 6px 0 0 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+#trocaRegistro,
+#registroTrocaRegistro {
+  border-radius: 0 6px 0 0;
+  border-bottom: none;
+}
+
+.login {
+  border: 1px solid #7a6a35;
+  border-radius: 0 0 8px 8px;
+  display: grid;
+  gap: 26px;
+  text-align: left;
+  width: 300px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+#btnLogin,
+#btnRegistrar {
+  background-color: #d4af37;
+  font-family: "Inter", sans-serif;
+  border: none;
+  margin-top: 12px;
+  border-radius: 6px;
+  padding: 11px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #7a6a35;
+  background: transparent;
+  color: #f5f5f5;
+  outline: none;
+  width: 100%;
+  padding: 5px 2px;
+  font-size: 0.95rem;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #0f0f0f inset;
+  -webkit-text-fill-color: #f5f5f5;
+  border: none;
+  border-bottom: 1px solid #7a6a35;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #7a6a35;
+  margin-bottom: 7px;
+  display: flex;
+  align-items: center;
+}
+
+.telefone::before,
+.senha::before,
+.nome::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 9px;
+  flex-shrink: 0;
+}
+
+.telefone::before {
+  background-image: url("/frontend/img/icone_celular.png");
+}
+
+.senha::before {
+  background-image: url("/frontend/img/icone_cadeado.png");
+}
+
+.nome::before {
+  background-image: url("/frontend/img/icone_pessoa.png");
+}

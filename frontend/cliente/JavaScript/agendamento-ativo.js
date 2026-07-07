@@ -11,15 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (agendamentos_cliente.mensagem) {
         agendamentosAtivos.innerHTML = "<h2>Você não possui agendamentos!</h2>";
       } else {
-        agendamentosAtivos.innerHTML = "<h2>Agendamento ativo</h2>";
-        agendamentosAtivos.innerHTML += `
-            <div>
-                <p>dia: ${agendamentos_cliente.dia}</p>
-                <p>horario: ${agendamentos_cliente.horario}</p>
-                <button onclick="cancelar(${agendamentos_cliente.id})">Cancelar</button>
-            </div>
-
-        `;
+        gerarCalendario(agendamentos_cliente.dia, agendamentos_cliente.id);
       }
     });
 });
@@ -47,4 +39,55 @@ function cancelar(id) {
     modal.classList.remove("modalVisivel");
     modal.classList.add("modalEscondido");
   });
+}
+
+// Calendário
+
+const diasNoMes = new Date(ano, mes, 0).getDate();
+
+function gerarCalendario(data, idAgendamento) {
+  // separando data em ano, mes e dia
+  const partes = data.split("-");
+  const ano = parseInt(partes[0]);
+  const mes = parseInt(partes[1]);
+  const dia = parseInt(partes[2]);
+
+  // Salvando data atual
+  const diasNoMes = new Date(ano, mes, 0).getDate();
+  const primeiroDia = new Date(ano, mes - 1, 1).getDay();
+
+  // criando calendario
+
+  const calendario = document.getElementById("calendario");
+
+  calendario.innerHTML = `
+  <div class="cal-header">
+    <button id="mesAnterior">&#8249;</button>
+    <span>${mes}/${ano}</span>
+    <button id="mesSeguinte">&#8250;</button>
+  </div>
+  <div class="cal-grid">
+    <div class="cal-dia-semana">D</div>
+    <div class="cal-dia-semana">S</div>
+    <div class="cal-dia-semana">T</div>
+    <div class="cal-dia-semana">Q</div>
+    <div class="cal-dia-semana">Q</div>
+    <div class="cal-dia-semana">S</div>
+    <div class="cal-dia-semana">S</div>
+  </div>
+`;
+  let celulas = "";
+
+  for (let i = 0; i < primeiroDia; i++) {
+    celulas += `<div class="cal-celula vazia"></div>`;
+  }
+
+  for (let d = 1; d <= diasNoMes; d++) {
+    const temAgendamento = d === dia;
+    celulas += `<div class="cal-celula ${temAgendamento ? "agendado" : ""}">
+    ${d}
+    ${temAgendamento ? `<span>Agendado</span><button onclick="cancelar(${idAgendamento})">Cancelar</button>` : ""}
+  </div>`;
+  }
+  document.querySelector(".cal-grid").innerHTML += celulas;
 }
