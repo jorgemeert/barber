@@ -5,7 +5,7 @@ const voltar = document.getElementById("voltar");
 voltar.href = `barbearias.html?id=${idCliente}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch(`http://127.0.0.1:5000/agendamentosAtivos/${idCliente}`)
+  fetch(`https://barber-w2d9.onrender.com/agendamentosAtivos/${idCliente}`)
     .then((response) => response.json())
     .then((agendamentos_cliente) => {
       if (agendamentos_cliente.mensagem) {
@@ -24,7 +24,7 @@ function cancelar(id) {
   btnNao = document.getElementById("nao");
 
   btnSim.addEventListener("click", () => {
-    fetch(`http://127.0.0.1:5000/cancelarAgendamento/${id}`, {
+    fetch(`https://barber-w2d9.onrender.com/cancelarAgendamento/${id}`, {
       method: "DELETE",
     }).then((response) => {
       if (response.ok) {

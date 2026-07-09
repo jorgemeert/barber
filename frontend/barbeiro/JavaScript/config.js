@@ -10,7 +10,7 @@ btnConfirma.addEventListener("click", () => {
     const valor = document.getElementById(idValor).value;
     const nome_servico = marcado.dataset.nome;
 
-    const promessa = fetch("http://127.0.0.1:5000/cadastroServico", {
+    const promessa = fetch("https://barber-w2d9.onrender.com/cadastroServico", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

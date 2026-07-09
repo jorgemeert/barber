@@ -9,7 +9,7 @@ const selectHorario = document.getElementById("horario");
 voltar.href = `barbearias.html?id=${idCliente}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch(`http://127.0.0.1:5000/servicos/${idBarberio}`)
+  fetch(`https://barber-w2d9.onrender.com/servicos/${idBarberio}`)
     .then((response) => response.json())
     .then((servicos) => {
       servicos.forEach((servico) => {
@@ -28,7 +28,7 @@ btnAgendar.addEventListener("click", () => {
   const horario = document.getElementById("horario").value;
   const servico = document.querySelector('input[name="servico"]:checked').value;
   const dataFormatada = data.split("-").reverse().join("/");
-  fetch("http://127.0.0.1:5000/agendarHorario", {
+  fetch("https://barber-w2d9.onrender.com/agendarHorario", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

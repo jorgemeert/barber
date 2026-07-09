@@ -32,7 +32,7 @@ btnRegistrar.addEventListener("click", () => {
   nome = document.getElementById("nome_registro").value;
   senha = document.getElementById("senha_registro").value;
 
-  fetch("http://127.0.0.1:5000/cadastro", {
+  fetch("https://barber-w2d9.onrender.com/cadastro", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ btnLogin.addEventListener("click", () => {
   numero = document.getElementById("numero_login").value;
   senha = document.getElementById("senha_login").value;
 
-  fetch("http://127.0.0.1:5000/login", {
+  fetch("https://barber-w2d9.onrender.com/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

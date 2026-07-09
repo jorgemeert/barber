@@ -6,7 +6,7 @@ const agendamentosAtivos = document.getElementById("agendamentoAtivos");
 agendamentosAtivos.href = `agendamento-ativo.html?id=${idCliente}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("http://127.0.0.1:5000/barbearias")
+  fetch("https://barber-w2d9.onrender.com/barbearias")
     .then((response) => response.json())
     .then((dados) => {
       dados.forEach((barbearias) => {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 btnPesquisa.addEventListener("click", () => {
   nome_barbearia = document.getElementById("pesquisa").value;
-  fetch("http://127.0.0.1:5000/pesquisarBarbearia", {
+  fetch("https://barber-w2d9.onrender.com/pesquisarBarbearia", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

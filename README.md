@@ -149,7 +149,7 @@ DATABASE_URL=sqlite:///corteja.db
 python -m backend.app
 ```
 
-A API estará disponível em `http://127.0.0.1:5000`
+A API estará disponível em `https://barber-w2d9.onrender.com`
 
 **6. Abra o frontend**
 

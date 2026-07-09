@@ -31,7 +31,7 @@ btnLogin.addEventListener("click", () => {
   numero = document.getElementById("numero_login").value;
   senha = document.getElementById("senha_login").value;
 
-  fetch("http://127.0.0.1:5000/loginBarbeiro", {
+  fetch("https://barber-w2d9.onrender.com/loginBarbeiro", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -61,7 +61,7 @@ btnRegistrar.addEventListener("click", () => {
   localizacao = document.getElementById("localizacao").value;
   foto = document.getElementById("foto").value;
 
-  fetch("http://127.0.0.1:5000/cadastroBarbeiro", {
+  fetch("https://barber-w2d9.onrender.com/cadastroBarbeiro", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

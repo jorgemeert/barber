@@ -19,7 +19,7 @@ btnBloqueio.addEventListener("click", () => {
   const horario = document.getElementById("horaBloqueio").value;
   const dataFormatada = dia.split("-").reverse().join("/");
 
-  fetch(`http://127.0.0.1:5000/bloquarDia`, {
+  fetch(`https://barber-w2d9.onrender.com/bloquarDia`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
