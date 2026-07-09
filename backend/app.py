@@ -39,7 +39,7 @@ from backend.models.bloqueio import Bloqueio
 from backend.models.bloqueio import Bloqueio
 
 #Dizendo para o Flask que esse grupo faz parte da aplicação;
-CORS(app)
+CORS(app, origins=["https://barber-phi-mocha.vercel.app", "http://127.0.0.1:5500"])
 app.register_blueprint(cliente_bp)
 app.register_blueprint(barbeiro_bp)
 app.register_blueprint(servico_bp)
