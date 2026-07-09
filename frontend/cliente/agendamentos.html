@@ -4,29 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="./css/agendamento.css" />
   </head>
   <body>
     <header>
-      <a href="" id="voltar">Voltar</a>
       <h1>CorteJá</h1>
-      <p>Vamos começar seu agendamento</p>
+      <nav>
+        <a href="" id="voltar">Início</a>
+        <a href="" class="active">Agendamentos</a>
+        <a href="">Configurações</a>
+      </nav>
     </header>
     <main>
-      <div id="servicosBarbeiro"></div>
-      <div>
-        <div>
-          <label for="data">Selecione um dia</label>
+      <h2>Agende seu horário</h2>
+      <div class="agendamento-container">
+        <div class="campo">
+          <label for="data">Dia</label>
           <input type="date" id="data" />
         </div>
-        <div>
-          <label for="horario">Selecione o horário do seu interesse</label>
-          <input type="time" id="horario" />
+        <div class="campo">
+          <label for="horario">Horário</label>
+          <select id="horario"></select>
         </div>
-        <div>
-          <label for="servico">Qual serviço você tem interesse em fazer?</label>
+        <div class="campo">
+          <label>Serviço</label>
           <div id="servicos"></div>
         </div>
-        <button id="btnAgendar">Agende seu horário</button>
+        <button id="btnAgendar">Agendar</button>
       </div>
     </main>
     <script src="./JavaScript/agendamentos.js"></script>

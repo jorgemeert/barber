@@ -4,72 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="css/login.css" />
   </head>
   <body>
-    <main id="login">
-      <div>
-        <h1>Corte Já</h1>
-        <h2>Seja bem-vindo Barbeiro!!</h2>
-      </div>
-      <div>
-        <button id="trocaLogin">Login</button>
-        <button id="trocaRegistro">Registre-se</button>
-      </div>
-      <div>
+    <div class="wrapper">
+      <section id="telaLogin">
         <div>
-          <label for="numero_login">Digite seu número</label>
-          <input type="text" id="numero_login" />
+          <h1>CorteJá</h1>
+          <h2>Seja bem-vindo Barbeiro!</h2>
         </div>
         <div>
-          <label for="senha_login">Digite sua senha</label>
-          <input type="password" id="senha_login" />
+          <button id="trocaLogin">Login</button>
+          <button id="trocaRegistro">Registre-se</button>
         </div>
-        <button id="btnLogin">Entrar</button>
-      </div>
-    </main>
-    <!-- Registro -->
-    <section id="registro" style="display: none">
-      <div>
-        <h1>Corte Já</h1>
-        <h2>Registre-se como Barbeiro!</h2>
-      </div>
-      <div>
-        <button id="registroTrocaLogin">Login</button>
-        <button id="registroTrocaRegistro">Registre-se</button>
-      </div>
-      <div>
-        <div>
-          <label for="nome_registro">Digite seu Nome</label>
-          <input type="text" id="nome_registro" />
+        <div class="login">
+          <div>
+            <div>
+              <label for="numero_login" class="telefone">Telefone (DD)</label>
+            </div>
+            <div>
+              <input type="text" id="numero_login" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="senha_login" class="senha">Digite sua senha</label>
+            </div>
+            <div>
+              <input type="password" id="senha_login" />
+            </div>
+          </div>
+          <button id="btnLogin">Entrar</button>
         </div>
-        <div>
-          <label for="nome_barbearia">Digite o nome Barbearia</label>
-          <input type="text" id="nome_barbearia" />
-        </div>
-        <div>
-          <label for="telefone">Digite seu número</label>
-          <input type="text" id="telefone" />
-        </div>
-        <div>
-          <label for="senha_registro">Digite sua senha</label>
-          <input type="password" id="senha_registro" />
-        </div>
-        <div>
-          <label for="localizacao">Digite o endereço</label>
-          <input type="text" id="localizacao" />
-        </div>
-        <div>
-          <label for="foto">Escolha uma foto para Barbearia</label>
-          <input
-            type="text"
-            id="foto"
-            placeholder="Cole o link de uma foto da barbearia"
-          />
-        </div>
+      </section>
 
-        <button id="btnRegistrar">Registrar</button>
-      </div>
-    </section>
+      <section id="registro" style="display: none">
+        <div>
+          <h1>CorteJá</h1>
+          <h2>Registre-se como Barbeiro!</h2>
+        </div>
+        <div>
+          <button id="registroTrocaLogin">Login</button>
+          <button id="registroTrocaRegistro">Registre-se</button>
+        </div>
+        <div class="login">
+          <div>
+            <div>
+              <label for="nome_registro" class="nome">Seu Nome Completo</label>
+            </div>
+            <div>
+              <input type="text" id="nome_registro" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="nome_barbearia" class="barbearia"
+                >Nome da Barbearia</label
+              >
+            </div>
+            <div>
+              <input type="text" id="nome_barbearia" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="telefone" class="telefone">Telefone (DD)</label>
+            </div>
+            <div>
+              <input type="text" id="telefone" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="senha_registro" class="senha">Sua Senha</label>
+            </div>
+            <div>
+              <input type="password" id="senha_registro" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="localizacao" class="localizacao"
+                >Endereço Barbearia</label
+              >
+            </div>
+            <div>
+              <input type="text" id="localizacao" />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label for="foto" class="foto">Link da foto da Barbearia</label>
+            </div>
+            <div>
+              <input type="text" id="foto" />
+            </div>
+          </div>
+          <button id="btnRegistrar">Registrar</button>
+        </div>
+      </section>
+    </div>
     <script src="./JavaScript/login.js"></script>
   </body>
 </html>

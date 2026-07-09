@@ -7,16 +7,22 @@
     <link rel="stylesheet" href="./css/calendario.css" />
   </head>
   <body>
-    <main>
+    <header>
       <h1>CorteJá</h1>
-      <a href="" id="horario">Horários</a>
-    </main>
+      <nav>
+        <a href="" class="active">Início</a>
+        <a href="" id="horario">Horários</a>
+        <a href="">Configurações</a>
+      </nav>
+    </header>
     <main>
-      <section>
-        <div id="horariosAgendados"></div>
-      </section>
+      <div class="titulo">
+        <h2>Dashboard</h2>
+        <p>Painel do Barbeiro</p>
+      </div>
+      <div id="calendario"></div>
       <div id="meuModal" class="modalEscondido">
-        <div>
+        <div class="modalConteudo">
           <p>Você tem certeza que deseja cancelar?</p>
           <button id="sim">Sim</button>
           <button id="nao">Não</button>

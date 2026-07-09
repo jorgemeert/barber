@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #222222;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+header h1 {
+  color: #c9a635;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 40px;
+}
+
+nav a {
+  color: #f5f5f5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  border-bottom: 2px solid #c9a635;
+}
+
+nav a.active {
+  color: #c9a635;
+}
+
+main {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.titulo {
+  margin-bottom: 28px;
+}
+
+.titulo h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+.titulo p {
+  font-size: 0.8rem;
+  color: #888888;
+  margin-top: 4px;
+}
+
+.card {
+  border: 1px solid #7a6a35;
+  border-radius: 12px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #f5f5f5;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.campo label {
+  font-size: 0.85rem;
+  color: #7a6a35;
+}
+
+.campo label span {
+  font-size: 0.75rem;
+  color: #555555;
+}
+
+.campo input {
+  background: transparent;
+  border: 1px solid #7a6a35;
+  border-radius: 8px;
+  color: #f5f5f5;
+  padding: 10px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.campo input:focus {
+  border-color: #c9a635;
+}
+
+#btnBloquear {
+  background-color: #c9a635;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.2s;
+  margin-top: 8px;
+}
+
+#btnBloquear:hover {
+  background-color: #d4af37;
+}
+
+.campo input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.campo select {
+  background-color: #0f0f0f;
+  border: 1px solid #7a6a35;
+  border-radius: 8px;
+  color: #f5f5f5;
+  padding: 10px 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9a635' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.campo select option {
+  background-color: #1a1a1a;
+  color: #f5f5f5;
+}

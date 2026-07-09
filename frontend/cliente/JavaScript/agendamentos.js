@@ -4,6 +4,8 @@ const idCliente = params.get("id");
 const servicosBarbeiro = document.getElementById("servicos");
 const btnAgendar = document.getElementById("btnAgendar");
 const voltar = document.getElementById("voltar");
+const selectHorario = document.getElementById("horario");
+
 voltar.href = `barbearias.html?id=${idCliente}`;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -47,3 +49,8 @@ btnAgendar.addEventListener("click", () => {
     }
   });
 });
+
+for (let h = 7; h <= 21; h++) {
+  selectHorario.innerHTML += `<option value="${String(h).padStart(2, "0")}:00">${String(h).padStart(2, "0")}:00</option>`;
+  selectHorario.innerHTML += `<option value="${String(h).padStart(2, "0")}:30">${String(h).padStart(2, "0")}:30</option>`;
+}

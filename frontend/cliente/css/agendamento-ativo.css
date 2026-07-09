@@ -16,7 +16,7 @@ header {
   display: flex;
   align-items: center;
   padding: 20px 40px;
-  background-color: #111111;
+  background-color: #222222;
   border-bottom: 1px solid #2a2a2a;
 }
 
@@ -41,9 +41,18 @@ header a {
   text-decoration: none;
   font-size: 0.95rem;
   padding-bottom: 6px;
+  position: static;
+  transform: none;
+  left: auto;
+  display: inline;
+  border-bottom: 2px solid transparent;
+  gap: 0;
 }
 
-header a.active,
+header a.active {
+  color: #c9a635;
+}
+
 header a:hover {
   border-bottom: 2px solid #c9a635;
 }

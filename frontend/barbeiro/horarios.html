@@ -4,27 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CorteJá</title>
+    <link rel="stylesheet" href="./css/horarios.css" />
   </head>
   <body>
     <header>
       <h1>CorteJá</h1>
-      <a href="" id="voltar">Voltar</a>
+      <nav>
+        <a href="" id="voltar">Início</a>
+        <a href="" class="active">Horários</a>
+        <a href="">Configurações</a>
+      </nav>
     </header>
     <main>
-      <section>
+      <div class="titulo">
+        <h2>Bloqueio de Horários</h2>
+        <p>Gerencie seus dias e horários indisponíveis</p>
+      </div>
+      <div class="card">
         <h3>Quais dias você deseja não ter horários marcados?</h3>
-        <div>
-          <div>
-            <label for="diaBloqueio">Qual dia você deseja bloquear</label>
-            <input type="date" id="diaBloqueio" />
-          </div>
-          <div>
-            <label for="">Deseja bloquear algum horário específico</label>
-            <input type="time" id="horaBloqueio" />
-          </div>
-          <button id="btnBloquear">Bloquear</button>
+        <div class="campo">
+          <label for="diaBloqueio">Dia</label>
+          <input type="date" id="diaBloqueio" />
         </div>
-      </section>
+        <div class="campo">
+          <label for="horaBloqueio"
+            >Horário específico <span>(opcional)</span></label
+          >
+          <select id="horaBloqueio"></select>
+        </div>
+        <button id="btnBloquear">Bloquear</button>
+      </div>
     </main>
     <script src="./JavaScript/horarios.js"></script>
   </body>

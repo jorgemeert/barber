@@ -4,6 +4,16 @@ const btnBloqueio = document.getElementById("btnBloquear");
 const voltar = document.getElementById("voltar");
 voltar.href = `calendario.html?id=${idBarbeiro}`;
 
+document.addEventListener("DOMContentLoaded", () => {
+  const selectHorario = document.getElementById("horaBloqueio");
+  selectHorario.innerHTML = '<option value="">Dia inteiro</option>';
+
+  for (let h = 7; h <= 21; h++) {
+    selectHorario.innerHTML += `<option value="${String(h).padStart(2, "0")}:00">${String(h).padStart(2, "0")}:00</option>`;
+    selectHorario.innerHTML += `<option value="${String(h).padStart(2, "0")}:30">${String(h).padStart(2, "0")}:30</option>`;
+  }
+});
+
 btnBloqueio.addEventListener("click", () => {
   const dia = document.getElementById("diaBloqueio").value;
   const horario = document.getElementById("horaBloqueio").value;

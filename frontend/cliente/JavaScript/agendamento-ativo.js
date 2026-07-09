@@ -45,18 +45,18 @@ function cancelar(id) {
 
 const diasNoMes = new Date(ano, mes, 0).getDate();
 
-function gerarCalendario(data, idAgendamento) {
-  // separando data em ano, mes e dia
+function gerarCalendario(data, idAgendamento, mesAgendamento, anoAgendamento) {
   const partes = data.split("-");
   const ano = parseInt(partes[0]);
   const mes = parseInt(partes[1]);
   const dia = parseInt(partes[2]);
 
-  // Salvando data atual
+  // Se não foram passados, usa os do mês atual (primeira chamada)
+  if (!mesAgendamento) mesAgendamento = mes;
+  if (!anoAgendamento) anoAgendamento = ano;
+
   const diasNoMes = new Date(ano, mes, 0).getDate();
   const primeiroDia = new Date(ano, mes - 1, 1).getDay();
-
-  // criando calendario
 
   const calendario = document.getElementById("calendario");
 
@@ -74,8 +74,8 @@ function gerarCalendario(data, idAgendamento) {
     <div class="cal-dia-semana">Q</div>
     <div class="cal-dia-semana">S</div>
     <div class="cal-dia-semana">S</div>
-  </div>
-`;
+  </div>`;
+
   let celulas = "";
 
   for (let i = 0; i < primeiroDia; i++) {
@@ -83,11 +83,35 @@ function gerarCalendario(data, idAgendamento) {
   }
 
   for (let d = 1; d <= diasNoMes; d++) {
-    const temAgendamento = d === dia;
+    const temAgendamento =
+      d === dia && mes === mesAgendamento && ano === anoAgendamento;
     celulas += `<div class="cal-celula ${temAgendamento ? "agendado" : ""}">
     ${d}
     ${temAgendamento ? `<span>Agendado</span><button onclick="cancelar(${idAgendamento})">Cancelar</button>` : ""}
   </div>`;
   }
+
   document.querySelector(".cal-grid").innerHTML += celulas;
+
+  document.getElementById("mesAnterior").addEventListener("click", () => {
+    let novoMes = mes - 1;
+    let novoAno = ano;
+    if (novoMes === 0) {
+      novoMes = 12;
+      novoAno = ano - 1;
+    }
+    const novaData = `${novoAno}-${String(novoMes).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
+    gerarCalendario(novaData, idAgendamento, mesAgendamento, anoAgendamento);
+  });
+
+  document.getElementById("mesSeguinte").addEventListener("click", () => {
+    let novoMes = mes + 1;
+    let novoAno = ano;
+    if (novoMes === 13) {
+      novoMes = 1;
+      novoAno = ano + 1;
+    }
+    const novaData = `${novoAno}-${String(novoMes).padStart(2, "0")}-${String(dia).padStart(2, "0")}`;
+    gerarCalendario(novaData, idAgendamento, mesAgendamento, anoAgendamento);
+  });
 }

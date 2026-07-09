@@ -20,7 +20,10 @@ app = Flask(__name__)
 
 #Configuração do banco de dados.
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') # lê o valorda váriavel SECRET_KEY que está .env.
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL') # É o endereço do banco de dados.
+database_url = os.getenv('DATABASE_URL', 'sqlite:///corteja.db')
+if database_url.startswith('postgres://'):
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 
 
 #Inicialização do banco de dados.
@@ -43,7 +46,8 @@ app.register_blueprint(servico_bp)
 app.register_blueprint(agendamento_bp)
 app.register_blueprint(bloqueio_bp)
 
-
+with app.app_context(): #Garante que as tabelas existam no banco indepedente de como o servidor foi iniciado.
+    db.create_all()
 
 #Inicialização do app.
 @app.route('/')
@@ -53,5 +57,5 @@ def iniciar():
 # Verifica se o arquvio está sendo executado diretamente.
 if __name__ == '__main__':
     with app.app_context(): # Usado pois o SQLAlhemy precisa saber qual app está sendo usado no momento.
-        db.create_all() # Criaas tabelas no banco de dados.
+        db.create_all() # Cria as tabelas no banco de dados.
     app.run(debug=True)   #Reinicia o servidor automaticamente quando você salva o código.
