@@ -1,7 +1,7 @@
 #Importação de bibliotecas e dados.
 from flask import  Blueprint, request, jsonify
 from backend.extensions import db
-from backend.models.servico import Serviço
+from backend.models.servico import Servico
 
 #Criando grupo de rotas dedicado ao Serviço.
 servico_bp = Blueprint('servico',__name__)
@@ -14,7 +14,7 @@ def cadastrar_servico():
     dados = request.get_json()
 
     #Criando um objeto com os dados recebidos.
-    servicos_barbeiro = Serviço(
+    servicos_barbeiro = Servico(
         nome_servico = dados['nome_servico'],
         valor = dados['valor'],
         id_barbeiro = dados['id_barbeiro']
@@ -32,7 +32,7 @@ def cadastrar_servico():
 def listar_servicos(id_barbeiro):
 
     #Filtrando os serviços do barbeiro.
-    servicos = Serviço.query.filter_by(id_barbeiro = id_barbeiro).all()
+    servicos = Servico.query.filter_by(id_barbeiro = id_barbeiro).all()
 
     #Mensagem caso não seja encontrado nenhum serviço.
     if not servicos:

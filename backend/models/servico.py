@@ -1,6 +1,6 @@
 from backend.extensions import db
 
-class Serviço(db.Model):
+class Servico(db.Model):
     __tablename__ = 'servicos'
 
     id = db.Column(db.Integer,primary_key = True)

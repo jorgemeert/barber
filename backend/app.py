@@ -33,7 +33,7 @@ db.init_app(app)
 #Importação dos models, para o db precisa ver e quais tabelas ele irá criar.
 from backend.models.cliente import Cliente
 from backend.models.barbeiro import Barbeiro
-from backend.models.servico import Serviço
+from backend.models.servico import Servico
 from backend.models.agendamento import Agendamento
 from backend.models.bloqueio import Bloqueio
 from backend.models.bloqueio import Bloqueio
