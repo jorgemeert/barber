@@ -153,13 +153,13 @@ label {
 }
 
 .telefone::before {
-  background-image: url("/frontend/img/icone_celular.png");
+  background-image: url("/img/icone_celular.png");
 }
 
 .senha::before {
-  background-image: url("/frontend/img/icone_cadeado.png");
+  background-image: url("/img/icone_cadeado.png");
 }
 
 .nome::before {
-  background-image: url("/frontend/img/icone_pessoa.png");
+  background-image: url("/img/icone_pessoa.png");
 }

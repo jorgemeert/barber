@@ -162,25 +162,25 @@ label {
 }
 
 .telefone::before {
-  background-image: url("/frontend/img/icone_celular.png");
+  background-image: url("/img/icone_celular.png");
 }
 
 .senha::before {
-  background-image: url("/frontend/img/icone_cadeado.png");
+  background-image: url("/img/icone_cadeado.png");
 }
 
 .nome::before {
-  background-image: url("/frontend/img/icone_pessoa.png");
+  background-image: url("/img/icone_pessoa.png");
 }
 
 .barbearia::before {
-  background-image: url("/frontend/img/icone_barbeiro.png");
+  background-image: url("/img/icone_barbeiro.png");
   width: 20px;
   height: 20px;
 }
 
 .localizacao::before {
-  background-image: url("/frontend/img/icone_loc.png");
+  background-image: url("/img/icone_loc.png");
 }
 
 .foto::before {
