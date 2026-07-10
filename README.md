@@ -2,6 +2,8 @@
 
 > Plataforma de agendamento online para barbearias — conectando clientes e barbeiros de forma simples e direta.
 
+🔗 **Deploy:** [barber-phi-mocha.vercel.app](https://barber-phi-mocha.vercel.app/)
+
 ---
 
 ## 💡 O Problema
@@ -17,44 +19,47 @@ O **CorteJá** é uma plataforma web onde barbeiros cadastram sua barbearia e di
 ## 👥 Funcionalidades
 
 ### Cliente
-
 - Cadastro com nome, telefone e senha
 - Login
 - Busca de barbearias por nome
 - Visualização de serviços e valores de cada barbearia
 - Agendamento de dia, horário e serviço
-- Visualização do agendamento ativo
+- Visualização do agendamento ativo em calendário mensal
 - Cancelamento de agendamento
 
 ### Barbeiro
-
 - Cadastro com dados da barbearia (nome, localização, foto, telefone)
 - Login
 - Configuração dos serviços oferecidos e seus valores
-- Visualização dos agendamentos recebidos (calendário)
+- Calendário mensal com agendamentos recebidos
 - Cancelamento de agendamentos
 - Bloqueio de dias e horários indisponíveis
+
+> ⚠️ **MVP:** A tela de configurações está em desenvolvimento e pode apresentar instabilidades. As demais funcionalidades estão operacionais.
 
 ---
 
 ## 🛠️ Tecnologias
 
 **Backend**
-
 - Python 3.13
 - Flask
 - Flask-SQLAlchemy (ORM)
 - Flask-CORS
-- SQLite
+- PostgreSQL (produção) / SQLite (desenvolvimento)
 - bcrypt (criptografia de senhas)
 - python-dotenv
+- Gunicorn
 
 **Frontend**
-
 - HTML, CSS, JavaScript (Fetch API)
 
-**Ferramentas**
+**Infraestrutura**
+- Backend: [Render](https://render.com)
+- Frontend: [Vercel](https://vercel.com)
+- Banco de dados: PostgreSQL (Render)
 
+**Ferramentas**
 - Insomnia (testes de API)
 - SQLite Viewer (inspeção do banco)
 
@@ -77,125 +82,106 @@ barber/
 │   │   ├── servico.py
 │   │   ├── agendamento.py
 │   │   └── bloqueio.py
-│   ├── config/                 # Configurações da aplicação
 │   ├── extensions.py           # Instância do banco de dados (SQLAlchemy)
 │   └── app.py                  # Inicialização da aplicação Flask
 ├── frontend/
 │   ├── index.html              # Escolha: cliente ou barbeiro
-│   ├── script.js
-│   ├── style.css
 │   ├── cliente/
-│   │   ├── login.html          # Login / registro de cliente
-│   │   ├── barbearias.html     # Lista e busca de barbearias
-│   │   ├── agendamentos.html   # Escolha de serviço, dia e horário
+│   │   ├── login.html
+│   │   ├── barbearias.html
+│   │   ├── agendamentos.html
 │   │   ├── agendamento-ativo.html
+│   │   ├── css/
 │   │   └── JavaScript/
-│   │       ├── login.js
-│   │       ├── barbearias.js
-│   │       ├── agendamentos.js
-│   │       └── agendamento-ativo.js
 │   └── barbeiro/
-│       ├── login.html          # Login / registro de barbeiro
-│       ├── config.html         # Cadastro de serviços e valores
-│       ├── horarios.html       # Calendário de agendamentos
-│       ├── calendario.html     # Bloqueio de dias/horários
+│       ├── login.html
+│       ├── config.html
+│       ├── horarios.html
+│       ├── calendario.html
+│       ├── css/
 │       └── JavaScript/
-│           ├── login.js
-│           ├── config.js
-│           ├── horarios.js
-│           └── calendario.js
-├── doc/                         # Histórias de usuário e backlog
-├── .env                         # Variáveis de ambiente (não versionado)
+├── doc/                        # Histórias de usuário e backlog
+├── Procfile                    # Configuração do Gunicorn para deploy
 ├── .gitignore
 └── requirements.txt
 ```
 
 ---
 
-## ⚙️ Como rodar o projeto
+## ⚙️ Como rodar localmente
 
 **1. Clone o repositório**
-
 ```bash
-git clone https://github.com/jorgemeert/corteja
+git clone https://github.com/jorgemeert/barber
 cd barber
 ```
 
 **2. Crie e ative o ambiente virtual**
-
 ```bash
 python -m venv .venv
 .venv\Scripts\activate   # Windows
 ```
 
 **3. Instale as dependências**
-
 ```bash
 pip install -r requirements.txt
 ```
 
 **4. Configure as variáveis de ambiente**
 
-Crie um arquivo `.env` dentro da pasta `backend` com o seguinte conteúdo:
-
+Crie um arquivo `.env` dentro da pasta `backend`:
 ```
 SECRET_KEY=sua_chave_secreta
 DATABASE_URL=sqlite:///corteja.db
 ```
 
 **5. Rode a aplicação**
-
 ```bash
 python -m backend.app
 ```
 
-A API estará disponível em `https://barber-w2d9.onrender.com`
+A API estará disponível em `http://127.0.0.1:5000`
 
 **6. Abra o frontend**
 
-Use a extensão **Live Server** (ou similar) para abrir `frontend/index.html` em `http://127.0.0.1:5500`.
+Use a extensão **Live Server** no VS Code para abrir `frontend/index.html`.
 
 ---
 
 ## 📡 Endpoints da API
 
 ### Cliente
-
-| Método | Rota        | Descrição           |
-| ------ | ----------- | ------------------- |
-| POST   | `/cadastro` | Cadastro de cliente |
-| POST   | `/login`    | Login de cliente    |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/cadastro` | Cadastro de cliente |
+| POST | `/login` | Login de cliente |
 
 ### Barbeiro
-
-| Método | Rota                  | Descrição                 |
-| ------ | --------------------- | ------------------------- |
-| POST   | `/cadastroBarbeiro`   | Cadastro de barbeiro      |
-| POST   | `/loginBarbeiro`      | Login de barbeiro         |
-| GET    | `/barbearias`         | Lista todas as barbearias |
-| POST   | `/pesquisarBarbearia` | Busca barbearia por nome  |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/cadastroBarbeiro` | Cadastro de barbeiro |
+| POST | `/loginBarbeiro` | Login de barbeiro |
+| GET | `/barbearias` | Lista todas as barbearias |
+| POST | `/pesquisarBarbearia` | Busca barbearia por nome |
 
 ### Serviço
-
-| Método | Rota                      | Descrição                     |
-| ------ | ------------------------- | ----------------------------- |
-| POST   | `/cadastroServico`        | Cadastro de serviço           |
-| GET    | `/servicos/<id_barbeiro>` | Lista serviços de um barbeiro |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/cadastroServico` | Cadastro de serviço |
+| GET | `/servicos/<id_barbeiro>` | Lista serviços de um barbeiro |
 
 ### Agendamento
-
-| Método | Rota                                 | Descrição                             |
-| ------ | ------------------------------------ | ------------------------------------- |
-| POST   | `/agendarHorario`                    | Cria um novo agendamento              |
-| GET    | `/mostrarAgendamentos/<id_barbeiro>` | Lista agendamentos de um barbeiro     |
-| GET    | `/agendamentosAtivos/<id_cliente>`   | Mostra o agendamento ativo do cliente |
-| DELETE | `/cancelarAgendamento/<id>`          | Cancela um agendamento                |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/agendarHorario` | Cria um novo agendamento |
+| GET | `/mostrarAgendamentos/<id_barbeiro>` | Lista agendamentos de um barbeiro |
+| GET | `/agendamentosAtivos/<id_cliente>` | Mostra o agendamento ativo do cliente |
+| DELETE | `/cancelarAgendamento/<id>` | Cancela um agendamento |
 
 ### Bloqueio
-
-| Método | Rota          | Descrição                                |
-| ------ | ------------- | ---------------------------------------- |
-| POST   | `/bloquarDia` | Bloqueia um dia/horário para um barbeiro |
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| POST | `/bloquarDia` | Bloqueia um dia/horário para um barbeiro |
 
 ---
 
@@ -209,21 +195,22 @@ Use a extensão **Live Server** (ou similar) para abrir `frontend/index.html` em
 
 ## 📌 Status do Projeto
 
-🚧 **Em desenvolvimento** — estrutura base do MVP concluída.
+🚧 **MVP concluído** — projeto desenvolvido individualmente ao longo de aproximadamente 2 meses.
 
-- [x] Modelagem do banco de dados
-- [x] Backend completo (cliente, barbeiro, serviço, agendamento, bloqueio)
-- [x] Fluxo completo do cliente: cadastro, login, busca de barbearias, agendamento, cancelamento
-- [x] Fluxo completo do barbeiro: cadastro, login, configuração de serviços, calendário, bloqueio de horários
-- [x] Cancelamento de agendamento pelo barbeiro
-- [ ] Cancelamento de agendamento pelo cliente
-- [ ] Estilização (CSS) de todas as páginas
+- [x] Modelagem do banco de dados (5 entidades)
+- [x] Backend completo com 13 endpoints REST
+- [x] Autenticação com bcrypt
+- [x] Fluxo completo do cliente: cadastro, login, busca, agendamento, cancelamento
+- [x] Fluxo completo do barbeiro: cadastro, login, serviços, calendário, bloqueio
+- [x] Calendário mensal interativo (cliente e barbeiro)
+- [x] Deploy em produção (Render + Vercel + PostgreSQL)
+- [ ] Tela de configurações de horários do barbeiro (em desenvolvimento)
 - [ ] Notificação ao cliente em caso de cancelamento pelo barbeiro
 
 ---
 
 ## 👨‍💻 Autor
 
-**Jorge Meert**
-Estudante de Engenharia de Software — FIAP
+**Jorge Meert**  
+Estudante de Engenharia de Software — FIAP  
 [github.com/jorgemeert](https://github.com/jorgemeert)
