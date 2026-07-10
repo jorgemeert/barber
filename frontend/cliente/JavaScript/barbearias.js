@@ -14,12 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
     <div id='${barbearias.id}'>
       <p>${barbearias.nome_barbearia}</p>
       <p>${barbearias.localizacao}</p>
-      <img src="${barbearias.foto}" alt="${barbearias.nome_barbearia}" width="100" />
+      <img src="${barbearias.foto}" alt="${barbearias.nome_barbearia}" />
     </div>
   `;
-        document.getElementById(barbearias.id).addEventListener("click", () => {
-          window.location.href = `agendamentos.html?id=${idCliente}&id_barber=${barbearias.id}`;
-        });
+      });
+
+      lista_barbearias.addEventListener("click", (event) => {
+        const div = event.target.closest("div[id]");
+        if (div) {
+          window.location.href = `agendamentos.html?id=${idCliente}&id_barber=${div.id}`;
+        }
       });
     });
 });
@@ -48,8 +52,16 @@ btnPesquisa.addEventListener("click", () => {
     <div id='${barbearias.id}'>
       <p>${barbearias.nome_barbearia}</p>
       <p>${barbearias.localizacao}</p>
+      <img src="${barbearias.foto}" alt="${barbearias.nome_barbearia}" />
     </div>
   `;
+        });
+
+        lista_barbearias.addEventListener("click", (event) => {
+          const div = event.target.closest("div[id]");
+          if (div) {
+            window.location.href = `agendamentos.html?id=${idCliente}&id_barber=${div.id}`;
+          }
         });
       }
     });
