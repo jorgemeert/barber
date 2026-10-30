@@ -20,7 +20,12 @@ app = Flask(__name__)
 
 #Configuração do banco de dados.
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY') # lê o valorda váriavel SECRET_KEY que está .env.
-database_url = os.getenv('DATABASE_URL', 'sqlite:///corteja.db')
+database_url = os.getenv('DATABASE_URL')
+if not database_url:
+    raise RuntimeError(
+        'DATABASE_URL não foi configurada. Defina a URL do PostgreSQL no Render; '
+        'para desenvolvimento local, configure DATABASE_URL=sqlite:///corteja.db no .env.'
+    )
 if database_url.startswith('postgres://'):
     database_url = database_url.replace('postgres://', 'postgresql://', 1)
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url

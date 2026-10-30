@@ -15,7 +15,9 @@ def cadastrar_barbeiro():
     dados = request.get_json()
 
     #Criptografando a senha do barbeiro, para uma melhor segurança.
-    senha_hash = bcrypt.hashpw(dados['senha'].encode('utf-8'),bcrypt.gensalt())
+    senha_hash = bcrypt.hashpw(
+        dados['senha'].encode('utf-8'), bcrypt.gensalt()
+    ).decode('utf-8')
 
     #Criando um objeto com os dados recebidos.
     novo_barbeiro = Barbeiro(
@@ -50,7 +52,11 @@ def login_barbeiro():
         return jsonify({'mensagem':'Barbeiro não encontrado.'}),404
 
     #Comparando a senha que o usário colocou com a senha criptografada do banco de dados.
-    if bcrypt.checkpw(dados['senha'].encode('utf-8'),barbeiro.senha):
+    hash_salvo = barbeiro.senha
+    if isinstance(hash_salvo, str):
+        hash_salvo = hash_salvo.encode('utf-8')
+
+    if bcrypt.checkpw(dados['senha'].encode('utf-8'), hash_salvo):
         #Mensagem de sucesso para o front-end.
         return jsonify({'mensagem':'Login correto! Seja bem-vindo!','id':barbeiro.id}),200
 

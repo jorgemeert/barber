@@ -18,7 +18,9 @@ def cadastrar_cliente():
   dados = request.get_json()
 
   #Criptografa a senha.
-  senha_hash = bcrypt.hashpw(dados['senha'].encode('utf-8'),bcrypt.gensalt())
+  senha_hash = bcrypt.hashpw(
+    dados['senha'].encode('utf-8'), bcrypt.gensalt()
+  ).decode('utf-8')
   #bcrypt.hashpw(...) - Aplica o hash de verdade.
   #dados['senha'] - Pega a senha que o usário digitou.
   #encode('utf-8') - Converte a senha de texto pra bytes.
@@ -63,7 +65,11 @@ def login_cliente():
     return jsonify({'mensagem':'Usário não encontrado.'}),404
 
   #verificação de senha.
-  if bcrypt.checkpw(dados['senha'].encode('utf-8'),cliente.senha):
+  hash_salvo = cliente.senha
+  if isinstance(hash_salvo, str):
+    hash_salvo = hash_salvo.encode('utf-8')
+
+  if bcrypt.checkpw(dados['senha'].encode('utf-8'), hash_salvo):
   #bcrypt.checkpw(...) - método que verifica senha.
   #cliente.senha - É o hash que está salvo no banco.
   #dados['senha'].ecode('UTF-8') - Senha que o usário digitou.
